@@ -16,3 +16,10 @@ export class PromptInput implements Input {
     }
 
 }
+
+export class BotInput implements Input {
+    next(currentTry: number): number {
+        return 0;
+    }
+
+}

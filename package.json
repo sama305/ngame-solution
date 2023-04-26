@@ -5,7 +5,8 @@
   "main": "index.ts",
   "scripts": {
     "build": "tsc --build",
-    "start:prompt": "node dist/prompt-runner.js",
+    "start:prompt": "node dist/run-prompt.js",
+    "start:bot": "node dist/run-bot.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

@@ -3,4 +3,4 @@ import {Game} from "./game"
 
 const game = new Game(new PromptInput());
 
-game.run()
+game.run();
