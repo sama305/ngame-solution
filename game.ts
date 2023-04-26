@@ -1,3 +1,5 @@
+import {Input} from "./input";
+
 export class Game {
     private readonly MIN: number = 1
     private readonly MAX: number = 1025
@@ -6,11 +8,31 @@ export class Game {
     private readonly number: number
     private tries: number = 0
 
-    constructor() {
+    constructor(readonly input: Input) {
         this.number = Math.floor(Math.random() * (this.MAX - this.MIN)) + this.MIN;
     }
 
-    guess(number: number): Result {
+    run() {
+        let result: Result;
+        do {
+            const number = this.input.next(this.currentTry());
+            result = this.guess(number);
+            if(result instanceof Success){
+                console.log("You did it!");
+            }
+            else if(result instanceof TryAgain){
+                console.log(`Your guess is too ${result.hint}!`);
+            }
+            else if (result instanceof GameOver){
+                console.log(`Number was ${result.number}, Game over!`);
+            }
+            else {
+                throw new Error("Unhandled game result");
+            }
+        } while (result instanceof TryAgain);
+    }
+
+    private guess(number: number): Result {
         if(number === this.number){
             return new Success()
         }
@@ -23,25 +45,25 @@ export class Game {
         }
     }
 
-    currentTry(): number {
+    private currentTry(): number {
         return this.tries + 1
     }
 }
 
-export interface Result {
+interface Result {
     readonly success: boolean
 }
 
-export class Success implements Result {
+class Success implements Result {
     readonly success = true
 }
 
-export class TryAgain implements Result {
+class TryAgain implements Result {
     readonly success = false
     constructor(readonly hint: string) {}
 }
 
-export class GameOver implements Result {
+class GameOver implements Result {
     readonly success = false
     constructor(readonly number: number) {}
 }
