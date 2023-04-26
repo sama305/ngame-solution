@@ -13,12 +13,12 @@ export class Game {
     }
 
     public guess(number: number): Result {
-        if(number === this.number){
-            return new Success(this.currentTry())
-        }
         this.tries++
         if(this.tries >= this.MAX_TRIES) {
             return new GameOver(this.currentTry(),this.number)
+        }
+        if(number === this.number){
+            return new Success(this.currentTry())
         }
         else {
             const hint = number < this.number ? 'low' : 'high'
