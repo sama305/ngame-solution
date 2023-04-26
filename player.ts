@@ -1,10 +1,10 @@
 import Prompt from "prompt-sync";
 
-export interface Input {
+export interface Player {
     next(): number
 }
 
-export class PromptInput implements Input {
+export class PromptPlayer implements Player {
     private readonly prompt = Prompt();
     next(): number {
         const input = this.prompt(`Your Guess: `);
@@ -17,7 +17,7 @@ export class PromptInput implements Input {
 
 }
 
-export class BotInput implements Input {
+export class BotPlayer implements Player {
     next(): number {
         return 0;
     }

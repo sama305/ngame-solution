@@ -1,6 +1,6 @@
-import {BotInput} from "./input";
+import {BotPlayer} from "./player";
 import {Game} from "./game";
 
-const game = new Game(new BotInput());
+const game = new Game(new BotPlayer());
 
 game.run();

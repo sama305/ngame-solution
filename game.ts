@@ -1,4 +1,4 @@
-import {Input} from "./input";
+import {Player} from "./player";
 
 export class Game {
     private readonly MIN: number = 1
@@ -8,14 +8,14 @@ export class Game {
     private readonly number: number
     private tries: number = 0
 
-    constructor(readonly input: Input) {
+    constructor(readonly player: Player) {
         this.number = Math.floor(Math.random() * (this.MAX - this.MIN)) + this.MIN;
     }
 
     run() {
         let result: Result;
         do {
-            const number = this.input.next();
+            const number = this.player.next();
             result = this.guess(number);
             if(result instanceof Success){
                 console.log(`[${this.currentTry()}]: You did it!`);
