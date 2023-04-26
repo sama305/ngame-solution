@@ -15,16 +15,17 @@ export class Game {
     run() {
         let result: Result;
         do {
-            const number = this.input.next(this.currentTry());
+            const number = this.input.next();
             result = this.guess(number);
             if(result instanceof Success){
-                console.log("You did it!");
+                console.log(`[${this.currentTry()}]: You did it!`);
             }
             else if(result instanceof TryAgain){
-                console.log(`Your guess is too ${result.hint}!`);
+                console.log(`[${this.currentTry()}]: Your guess is too ${result.hint}!`);
+                this.tries++
             }
             else if (result instanceof GameOver){
-                console.log(`Number was ${result.number}, Game over!`);
+                console.log(`[${this.currentTry()}]: Number was ${result.number}, Game over!`);
             }
             else {
                 throw new Error("Unhandled game result");
@@ -36,7 +37,7 @@ export class Game {
         if(number === this.number){
             return new Success()
         }
-        if(++this.tries >= this.MAX_TRIES) {
+        if(this.tries >= this.MAX_TRIES - 1) {
             return new GameOver(this.number)
         }
         else {
