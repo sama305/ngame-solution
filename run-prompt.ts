@@ -1,6 +1,6 @@
 import {PromptPlayer} from "./player";
-import {Game} from "./game"
+import {Runner} from "./runner";
 
-const game = new Game(new PromptPlayer());
+const runner = new Runner(new PromptPlayer())
 
-game.run();
+runner.run();

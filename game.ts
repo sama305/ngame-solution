@@ -8,63 +8,48 @@ export class Game {
     private readonly number: number
     private tries: number = 0
 
-    constructor(readonly player: Player) {
+    constructor() {
         this.number = Math.floor(Math.random() * (this.MAX - this.MIN)) + this.MIN;
     }
 
-    run() {
-        let result: Result;
-        do {
-            const number = this.player.next();
-            result = this.guess(number);
-            if(result instanceof Success){
-                console.log(`[${this.currentTry()}]: You did it!`);
-            }
-            else if(result instanceof TryAgain){
-                console.log(`[${this.currentTry()}]: Your guess is too ${result.hint}!`);
-                this.tries++
-            }
-            else if (result instanceof GameOver){
-                console.log(`[${this.currentTry()}]: Number was ${result.number}, Game over!`);
-            }
-            else {
-                throw new Error("Unhandled game result");
-            }
-        } while (result instanceof TryAgain);
-    }
-
-    private guess(number: number): Result {
+    public guess(number: number): Result {
         if(number === this.number){
-            return new Success()
+            return new Success(this.currentTry())
         }
-        if(this.tries >= this.MAX_TRIES - 1) {
-            return new GameOver(this.number)
+        this.tries++
+        if(this.tries >= this.MAX_TRIES) {
+            return new GameOver(this.currentTry(),this.number)
         }
         else {
             const hint = number < this.number ? 'low' : 'high'
-            return new TryAgain(hint)
+            return new TryAgain(this.currentTry(),hint)
         }
     }
 
     private currentTry(): number {
-        return this.tries + 1
+        return this.tries
     }
 }
 
-interface Result {
+export class Result {
     readonly success: boolean
+    constructor(readonly currentTry: number) {}
 }
 
-class Success implements Result {
+export class Success extends Result {
     readonly success = true
 }
 
-class TryAgain implements Result {
+export class TryAgain extends Result {
     readonly success = false
-    constructor(readonly hint: string) {}
+    constructor(readonly currentTry: number, readonly hint: string) {
+        super(currentTry)
+    }
 }
 
-class GameOver implements Result {
+export class GameOver extends Result {
     readonly success = false
-    constructor(readonly number: number) {}
+    constructor(readonly currentTry: number, readonly number: number) {
+        super(currentTry)
+    }
 }
