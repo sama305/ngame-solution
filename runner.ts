@@ -14,10 +14,10 @@ export class Runner {
                 console.log(`[${result.currentTry}]: You did it!`);
             }
             else if(result instanceof TryAgain){
-                console.log(`[${result.currentTry}]: Your guess is too ${result.hint}!`);
+                console.log(`[${result.currentTry}]: ${number} is too ${result.hint}!`);
             }
             else if (result instanceof GameOver){
-                console.log(`[${result.currentTry}]: Number was ${result.number}, Game over!`);
+                console.log(`[${result.currentTry}]: ${number} is NOT it. Number was ${result.number}, Game over!`);
             }
             else {
                 throw new Error("Unhandled game result");
