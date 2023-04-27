@@ -3,9 +3,10 @@
 ## Description 
 Welcome to the number game where you need to guess a random generated number. 
 The generated number range is **1 to 1024** and a player has a max number of **10 tries**.
+You can play the game as a prompt player.
 
 ## Task
-Your task is to "hack" the game by writing a BotPlayer that always beets the game. 
+Your task is to "hack" the game by writing a BotPlayer that always beats the game. 
 
 The game logic is split into 5 files:
 - `game.ts` - Encapsulate the game logic
@@ -37,7 +38,7 @@ There 3 types of classes that represent/extends the `Result` class (see their us
 You should be only coding within the scope of `BotPlayer` class**
 
 ## Background
-This is a binary search problem which means the max attempts your bot should make follow the following formula:
+This is a binary search problem which means the max attemts to guess a number can follow the following formula:
 `max_attempts = log2(n)` where `n` is number of possibilities.
 
 Hence, your bot should be able to "hack the game". `log2(1024) = 10`
