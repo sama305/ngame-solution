@@ -59,7 +59,7 @@ Hence, your bot should be able to "hack the game". `log2(1024) = 10`
 
 2. Build project (transpiles Typescript to vanilla Javascript)
     ```shell
-    npm build
+    npm run build
     ```
 
 ### Run The Game
