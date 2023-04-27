@@ -11,7 +11,7 @@ export class Runner {
             const number = this.player.next(result);
             result = this.game.guess(number);
             if(result instanceof Success){
-                console.log(`[${result.currentTry}]: You did it!`);
+                console.log(`[${result.currentTry}]: ${number} is Bingo! You did it!`);
             }
             else if(result instanceof TryAgain){
                 console.log(`[${result.currentTry}]: ${number} is too ${result.hint}!`);
