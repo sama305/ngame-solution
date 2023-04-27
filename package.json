@@ -1,7 +1,7 @@
 {
   "name": "ngame",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Description  Welcome to the number game where you need to guess a random generated number.  The generated number range is **1 to 1024** and a player has a max number of **10 tries**. You can play the game as a prompt player.",
   "main": "index.ts",
   "scripts": {
     "build": "tsc --build",
@@ -19,5 +19,13 @@
   },
   "dependencies": {
     "prompt-sync": "^4.2.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sama305/ngame-solution.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sama305/ngame-solution/issues"
+  },
+  "homepage": "https://github.com/sama305/ngame-solution#readme"
 }
