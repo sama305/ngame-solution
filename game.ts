@@ -42,7 +42,7 @@ export class Success extends Result {
 
 export class TryAgain extends Result {
     readonly success = false
-    constructor(readonly currentTry: number, readonly hint: string) {
+    constructor(readonly currentTry: number, readonly hint: 'low' | 'high') {
         super(currentTry)
     }
 }
