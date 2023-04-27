@@ -15,6 +15,9 @@ export class Game {
     public guess(number: number): Result {
         this.tries++
         if(this.tries >= this.MAX_TRIES) {
+            if(number === this.number){
+                return new Success(this.currentTry())
+            }
             return new GameOver(this.currentTry(),this.number)
         }
         if(number === this.number){
