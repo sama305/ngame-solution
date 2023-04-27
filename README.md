@@ -9,11 +9,11 @@ You can play the game as a prompt player.
 Your task is to "hack" the game by writing a BotPlayer that always beats the game. 
 
 The game logic is split into 5 files:
-- `game.ts` - Encapsulate the game logic
-- `player.ts` - Define 2 types of players and encapsulate a player's "next guess" logic 
-- `runner.ts` - Orchestrates the communication between the game and the player.
-- `run-prompt.ts` - Configures a player as a prompt player and runs the game.
-- `run-bot-ts` - - Configures a player as a bot player and runs the game.
+- `game.ts`: Encapsulate the game logic
+- `player.ts`: Define 2 types of players and encapsulate a player's "next guess" logic 
+- `runner.ts`: Orchestrates the communication between the game and the player.
+- `run-prompt.ts`: Configures a player as a prompt player and runs the game.
+- `run-bot-ts`: Configures a player as a bot player and runs the game.
 
 Within `player.ts` file you should find an "empty" implementation of a BotPlayer:
 ```typescript
