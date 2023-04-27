@@ -62,12 +62,14 @@ Hence, your bot should be able to "hack the game". `log2(1024) = 10`
     npm build
     ```
 
-3. Run the game as a "Prompt" player 
+### Run The Game
+
+1. Run the game as a "Prompt" player 
     ```shell
     npm run prompt
     ```
 
-4. Run the game as a "Bot" player
+2. Run the game as a "Bot" player
     ```shell
     npm run bot
     ```
