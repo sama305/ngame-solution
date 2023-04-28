@@ -2,8 +2,10 @@ import {Player} from "./player";
 import {Game, GameOver, Result, Success, TryAgain} from "./game";
 
 export class Runner {
-    private readonly game = new Game()
-    constructor(readonly player: Player) {}
+    private readonly game: Game
+    constructor(readonly player: Player) {
+        this.game = new Game();
+    }
 
     run() {
         let result: Result | undefined = undefined;
